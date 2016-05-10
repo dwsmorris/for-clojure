@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+	<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="../bower_components/web-component-tester/browser.js"></script>
+	<link rel="import" href="../bower_components/polymer/polymer.html" />
+	<link rel="import" href="../bower_components/ramda-import/ramda-import.html" />
+
+
+	<!-- Step 1: import the element to test -->
+	<link rel="import" href="../for-clojure.html">
+</head>
+<body>
+	<for-clojure></for-clojure>
+	<for-clojure></for-clojure>
+		<!-- You can use the document as a place to set up your fixtures. -->
+		<test-fixture id="for-clojure-fixture">
+			<template>
+				<for-clojure>
+					<h2>for-clojure</h2>
+				</for-clojure>
+			</template>
+		</test-fixture>
+		<script>
+			suite("unit tests", function () {
+				test("tests map", function () {
+					var result = R.map(function (x) { return x + 1; }, [1, 2, 3]);
+					var i = 90;
+				});
+			});
+
+			suite('<for-clojure>', function () {
+
+				var myEl;
+
+				setup(function () {
+					myEl = fixture('for-clojure-fixture');
+				});
+
+				test('defines the "author" property', function () {
+					assert.equal(myEl.author.name, 'Dimitri Glazkov');
+					assert.equal(myEl.author.image, 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
+				});
+
+				test('says hello', function () {
+					assert.equal(myEl.sayHello(), 'for-clojure says, Hello World!');
+
+					var greetings = myEl.sayHello('greetings Earthlings');
+					assert.equal(greetings, 'for-clojure says, greetings Earthlings');
+				});
+
+				test('fires lasers', function (done) {
+					myEl.addEventListener('for-clojure-lasers', function (event) {
+						assert.equal(event.detail.sound, 'Pew pew!');
+						done();
+					});
+					myEl.fireLasers();
+				});
+
+				test('distributed children', function () {
+					var els = myEl.getContentChildren();
+					assert.equal(els.length, 1, 'one distributed node');
+					assert.equal(els[0], myEl.querySelector('h2'), 'content distributed correctly');
+				});
+
+			});
+		</script>
+</body>
+</html>
