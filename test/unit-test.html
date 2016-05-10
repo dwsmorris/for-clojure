@@ -23,11 +23,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	<link rel="import" href="../for-clojure.html">
 </head>
 <body>
+	<for-clojure></for-clojure>
 	<script>
-		suite("unit tests", function () {
-			test("tests map", function () {
-				var result = R.map(function (x) { return x + 1; }, [1, 2, 3]);
-				var i = 90;
+		suite("<for-clojure>", function () {
+			var forClojure = document.querySelector("for-clojure");
+
+			test("nothing but the truth", function () {
+				expect(forClojure.no1).to.equal(true);
+			});
+
+			test("simple math", function () {
+				expect(forClojure.no2).to.equal(R.subtract(10, R.multiply(2, 3)));
 			});
 		});
 	</script>
