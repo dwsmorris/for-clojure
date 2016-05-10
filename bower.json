@@ -1,31 +1,22 @@
 {
   "name": "for-clojure",
-  "version": "1.0.7",
-  "authors": [
-    "Anonymous <anonymous@example.com>"
-  ],
-  "description": "An element providing a solution to no problem in particular.",
+  "version": "0.0.1",
+  "description": "Solutions to the 4Clojure exercises in JavaScript.",
   "keywords": [
     "web-component",
-    "polymer",
-    "seed"
+    "4clojure"
   ],
   "main": "for-clojure.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/<USERNAME>/for-clojure/",
   "ignore": [
     "/.*",
     "/test/"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.2.0",
-    "lodash": "^4.12.0",
-    "lodash-fp": "^0.10.4",
-    "ramda": "^0.21.0",
     "ramda-import": "dwsmorris/ramda-import"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "web-component-tester": "^4.0.0"
   }
 }
