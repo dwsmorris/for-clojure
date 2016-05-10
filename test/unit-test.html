@@ -35,6 +35,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			test("simple math", function () {
 				expect(forClojure.no2).to.equal(R.subtract(10, R.multiply(2, 3)));
 			});
+
+			suite("penultimate element", function () {
+				// note - querySelector result not guarenteed to exist until tests are executed...
+				test("(= (__ (list 1 2 3 4 5)) 4)", function () {
+					expect(forClojure.no20([1, 2, 3, 4, 5])).to.equal(4);
+				});
+
+				test("(= (__ ['a' 'b' 'c']) 'b')", function () {
+					expect(forClojure.no20(['a', 'b', 'c'])).to.equal('b');
+				});
+
+				test("(= (__ [[1 2] [3 4]]) [1 2])", function () {
+					expect(forClojure.no20([[1, 2], [3, 4]])).to.deep.equal([1, 2]);
+				});
+			});
 		});
 	</script>
 </body>
