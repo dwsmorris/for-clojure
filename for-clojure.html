@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../ramda-import/ramda-import.html" />
+<link rel="import" href="../patternscript/patternscript.html" />
 <!--
 Solutions to the 4Clojure exercies in JavaScript
 -->
@@ -7,13 +8,16 @@ Solutions to the 4Clojure exercies in JavaScript
 	<script>
 		Polymer({
 			is: 'for-clojure',
-			
-			no1: true,
-			no2: 4,
-			no5: R.prepend,
-			no7: R.append,
-			no11: R.mergeAll,
-			no20: R.pipe(R.reverse, R.tail, R.head)
+			ready: function() {
+				PatternScript.compile(this);
+			},
+
+			"no1"	: "true",
+			"no2"	: "4",
+			"no5"	: "R.prepend",
+			"no7"	: "R.append",
+			"no11"	: "R.mergeAll",
+			"no20"	: "(R.pipe R.reverse R.tail R.head)",
 		});
 	</script>
 </dom-module>

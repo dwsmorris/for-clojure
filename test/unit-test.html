@@ -23,13 +23,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	<script>
 		suite("<for-clojure>", function () {
 			var forClojure = document.querySelector("for-clojure");
-
+			
 			suite("#1 - nothing but the truth", function () {
 				test("(= __ true)", function () {
 					expect(forClojure.no1).to.equal(true);
 				});
 			});
-
+			
 			suite("#2 - simple math", function () {
 				test("(= (- 10 (* 2 3)) __)", function () {
 					expect(forClojure.no2).to.equal(R.subtract(10, R.multiply(2, 3)));
@@ -47,7 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					expect(forClojure.no7(4, [1, 2, 3])).to.deep.equal([1, 2, 3, 4]);
 				});
 			});
-
+			
 			suite("#11 - Maps: conj", function () {
 				test("(= {:a 1, :b 2, :c 3} (conj {:a 1} __ [:c 3]))", function () {
 					expect(forClojure.no11([{ a: 1 }, { b: 2 }, { c: 3 }])).to.deep.equal({ a: 1, b: 2, c: 3 });
@@ -68,6 +68,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					expect(forClojure.no20([[1, 2], [3, 4]])).to.deep.equal([1, 2]);
 				});
 			});
+			
 		});
 	</script>
 </body>
