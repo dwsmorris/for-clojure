@@ -8,6 +8,12 @@ Solutions to the 4Clojure exercies in JavaScript
 	<script>
 		Polymer({
 			is: 'for-clojure',
+			properties: {
+				property: {
+					type: Number,
+					value: 1
+				}
+			},
 			ready: function() {
 				PatternScript.compile(this);
 			},
@@ -17,7 +23,7 @@ Solutions to the 4Clojure exercies in JavaScript
 			"no5"	: "R.prepend",
 			"no7"	: "R.append",
 			"no11"	: "R.mergeAll",
-			"no20"	: "(R.pipe R.reverse R.tail R.head)",
+			"no20"	: "(R.pipe R.reverse R.tail R.head)"
 		});
 	</script>
 </dom-module>
