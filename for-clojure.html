@@ -6,24 +6,25 @@ Solutions to the 4Clojure exercies in JavaScript
 -->
 <dom-module id="for-clojure">
 	<script>
-		Polymer({
+		ForClojure = Polymer({
 			is: 'for-clojure',
 			properties: {
 				property: {
 					type: Number,
 					value: 1
 				}
-			},
-			ready: function() {
-				PatternScript.compile(this);
-			},
-
-			"no1"	: "true",
-			"no2"	: "4",
-			"no5"	: "R.prepend",
-			"no7"	: "R.append",
-			"no11"	: "R.mergeAll",
-			"no20"	: "(R.pipe R.reverse R.tail R.head)"
+			}
+		});
+		PatternScript.extend(ForClojure, {
+			"no1": "true",
+			"no2": "4",
+			"no5": "R.prepend",
+			"no7": "R.append",
+			"no11": "R.mergeAll",
+			"no20": "(R.pipe R.reverse R.tail R.head)"
+		});
+		PatternScript.extend(ForClojure.prototype, {
+			"(referencedProperty)": "this.property"
 		});
 	</script>
 </dom-module>

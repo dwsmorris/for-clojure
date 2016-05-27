@@ -19,53 +19,61 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	<link rel="import" href="../for-clojure.html">
 </head>
 <body>
-	<for-clojure></for-clojure>
+	<for-clojure property="2"></for-clojure>
 	<script>
 		describe("<for-clojure>", function () {
 			var forClojure = document.querySelector("for-clojure");
+
+			it("has assigned value for property", function () {
+				expect(forClojure.property).to.equal(2);
+			});
+			
+			it("supports 'this' used in patternscript to reference property", function () {
+				expect(forClojure.referencedProperty()).to.equal(2);
+			});
 			
 			describe("#1 - nothing but the truth", function () {
 				it("(= __ true)", function () {
-					expect(forClojure.no1).to.equal(true);
+					expect(ForClojure.no1).to.equal(true);
 				});
 			});
 			
 			describe("#2 - simple math", function () {
 				it("(= (- 10 (* 2 3)) __)", function () {
-					expect(forClojure.no2).to.equal(R.subtract(10, R.multiply(2, 3)));
+					expect(ForClojure.no2).to.equal(R.subtract(10, R.multiply(2, 3)));
 				});
 			});
 
 			describe("#5 - Lists: conj", function () {
 				it("(= __ (conj '(2 3 4) 1))", function () {
-					expect(forClojure.no5(1, [2, 3, 4])).to.deep.equal([1, 2, 3, 4]);
+					expect(ForClojure.no5(1, [2, 3, 4])).to.deep.equal([1, 2, 3, 4]);
 				});
 			});
 
 			describe("#7 - Vectors: conj", function () {
 				it("(= __ (conj [1 2 3] 4))", function () {
-					expect(forClojure.no7(4, [1, 2, 3])).to.deep.equal([1, 2, 3, 4]);
+					expect(ForClojure.no7(4, [1, 2, 3])).to.deep.equal([1, 2, 3, 4]);
 				});
 			});
 			
 			describe("#11 - Maps: conj", function () {
 				it("(= {:a 1, :b 2, :c 3} (conj {:a 1} __ [:c 3]))", function () {
-					expect(forClojure.no11([{ a: 1 }, { b: 2 }, { c: 3 }])).to.deep.equal({ a: 1, b: 2, c: 3 });
+					expect(ForClojure.no11([{ a: 1 }, { b: 2 }, { c: 3 }])).to.deep.equal({ a: 1, b: 2, c: 3 });
 				});
 			});
 
 			describe("#20 - penultimate element", function () {
 				// note - querySelector result not guarenteed to exist until tests are executed...
 				it("(= (__ (list 1 2 3 4 5)) 4)", function () {
-					expect(forClojure.no20([1, 2, 3, 4, 5])).to.equal(4);
+					expect(ForClojure.no20([1, 2, 3, 4, 5])).to.equal(4);
 				});
 
 				it("(= (__ ['a' 'b' 'c']) 'b')", function () {
-					expect(forClojure.no20(['a', 'b', 'c'])).to.equal('b');
+					expect(ForClojure.no20(['a', 'b', 'c'])).to.equal('b');
 				});
 
 				it("(= (__ [[1 2] [3 4]]) [1 2])", function () {
-					expect(forClojure.no20([[1, 2], [3, 4]])).to.deep.equal([1, 2]);
+					expect(ForClojure.no20([[1, 2], [3, 4]])).to.deep.equal([1, 2]);
 				});
 			});
 			
